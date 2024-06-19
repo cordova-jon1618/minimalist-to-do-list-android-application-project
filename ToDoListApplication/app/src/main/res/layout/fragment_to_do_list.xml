@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    tools:context="afinal.jcordova.com.todolistapplication.ToDoListActivityFragment"
+    tools:showIn="@layout/activity_to_do_list">
+
+    <TableLayout
+        android:id="@+id/inputControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/min_dp_5dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="@dimen/min_dp_5dp"
+        android:shrinkColumns="1"
+        android:stretchColumns="1">
+
+        <TableRow
+
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tasktitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tasktitle"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+
+            <EditText
+                android:id="@+id/edit_tasktitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_title"
+                android:inputType="text"
+                android:text="@string/edit"
+                android:textSize="@dimen/text_size_normal" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/short_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shortdesc"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+
+            <EditText
+                android:id="@+id/edit_short_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_shortdesc"
+                android:inputType="textShortMessage"
+                android:text="@string/edit"
+                android:textSize="@dimen/text_size_normal" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/duedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+
+
+            <EditText
+                android:id="@+id/edit_duedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_due"
+                android:inputType="date"
+                android:text="@string/edit"
+                android:textSize="@dimen/text_size_normal" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/additionalinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addinfo"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_normal" />
+
+
+            <EditText
+                android:id="@+id/edit_additionalinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_addtlinfo"
+                android:inputType="textShortMessage"
+                android:text="@string/edit"
+                android:textSize="@dimen/text_size_normal" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"
+            android:minHeight="@dimen/size_25dp"
+            android:text="@string/post"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_normal" />
+
+    </TableLayout>
+
+    <ListView
+        android:id="@+id/todoItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/inputControls"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

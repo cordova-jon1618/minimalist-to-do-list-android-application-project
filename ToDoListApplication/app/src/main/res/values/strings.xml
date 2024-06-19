@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Simple To Do List App</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="titel_activity_todo">To Do</string>
+    <string name="edit"></string>
+    <string name="tasktitle">Task Title:</string>
+    <string name="shortdesc">Short Description:</string>
+    <string name="date">Due Date:</string>
+    <string name="addinfo">Additional Info:</string>
+    <string name="post">Add Task to List</string>
+    <string name="hint_title">Please enter task title</string>
+    <string name="hint_shortdesc">Please enter a short description</string>
+    <string name="hint_due">Please enter due date (e.g. MM.DD.YY)</string>
+    <string name="hint_addtlinfo">Please enter any additional information</string>
+
+    <string name="alert_title">Task Title or/and Due Date Missing</string>
+    <string name="alert_message">Please enter a Task Title and a Task Due Date</string>
+
+</resources>
