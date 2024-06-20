@@ -37,6 +37,8 @@ I will continue working on it in 2024 to enhance it with new features.
 
 ![image](https://github.com/cordova-jon1618/minimalist-to-do-list-android-application-project/assets/29684905/d9424d91-e140-48df-8e08-631a0e5dcd44)
 
+![image](https://github.com/cordova-jon1618/minimalist-to-do-list-android-application-project/assets/29684905/370a70ca-b69c-469a-a5b4-ced6f409ef08)
+
 
 ##  Acknowledgements
 
