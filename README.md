@@ -7,7 +7,7 @@ Jonathan Cordova [@cordova-jon1618] - https://github.com/cordova-jon1618
 
 ##  Description
 
-This is a minimalist to-do list Android application developed initially as my first Google Android application project in 2017. I completed this project at the UCLA Extension Center as part of the Java Series - Google Android Development course. This application focuses on providing a simple and intuitive interface for managing daily tasks, embracing a minimalist design philosophy to ensure ease of use and a clutter-free experience.
+This is a minimalist to-do list Android application. I completed this project at the UCLA Extension Center as part of the Java Series - Google Android Development course. This application focuses on providing a simple and intuitive interface for managing daily tasks, embracing a minimalist design philosophy to ensure ease of use and a clutter-free experience.
 
 I will continue working on it in 2024 to enhance it with new features.
 
