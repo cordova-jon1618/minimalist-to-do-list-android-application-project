@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,30 @@ public class ToDoListActivityFragment extends Fragment {
                 //onClearEditBox();
             }
         });
+
+        // Adding the task to the To-Do List using the 'Enter' key event
+        View.OnKeyListener onKeyListener = new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    onSave();
+                    return true;
+                }
+                return false;
+            }
+        };
+
+        // Attaching the OnKeyListener to all relevant EditText fields
+        EditText title = (EditText)getActivity().findViewById(R.id.edit_tasktitle);
+        EditText shortdesc = (EditText)getActivity().findViewById(R.id.edit_short_desc);
+        EditText duedate = (EditText)getActivity().findViewById(R.id.edit_duedate);
+        EditText addtlinfo = (EditText)getActivity().findViewById(R.id.edit_additionalinfo);
+
+        title.setOnKeyListener(onKeyListener);
+        shortdesc.setOnKeyListener(onKeyListener);
+        duedate.setOnKeyListener(onKeyListener);
+        addtlinfo.setOnKeyListener(onKeyListener);
+
     }//end of onActivityCreated
 
     private void onSave(){
