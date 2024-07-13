@@ -89,10 +89,12 @@ public class ToDoListActivityFragment extends Fragment {
 
         String todoTitle = title.getText().toString();
         String todoDate = duedate.getText().toString();
-        if(TextUtils.isEmpty(todoTitle) || TextUtils.isEmpty(todoDate)){
+/*        if(TextUtils.isEmpty(todoTitle) || TextUtils.isEmpty(todoDate)){
+            showMissingInfoAlert();
+        }else {*/
+        if(TextUtils.isEmpty(todoTitle)){
             showMissingInfoAlert();
         }else {
-
             todo.setTitle(todoTitle);
             todo.setDuedate(todoDate);
             todo.setShortdesc(shortdesc.getText().toString());
