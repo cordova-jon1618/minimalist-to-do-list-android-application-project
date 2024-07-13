@@ -111,7 +111,6 @@ public class ToDoListActivityFragment extends Fragment {
         EditText duedate = (EditText)getActivity().findViewById(R.id.edit_duedate);
         EditText addtlinfo = (EditText)getActivity().findViewById(R.id.edit_additionalinfo);
 
-
         String todoTitle = title.getText().toString();
         String todoDate = duedate.getText().toString();
 /*        if(TextUtils.isEmpty(todoTitle) || TextUtils.isEmpty(todoDate)){
@@ -136,7 +135,6 @@ public class ToDoListActivityFragment extends Fragment {
             onClearEditBox();
             // Reset focus back to the title field
             title.requestFocus();
-
         }
         //Hides the keyboard after the user hits the save button
         InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -162,7 +160,6 @@ public class ToDoListActivityFragment extends Fragment {
     public void showMissingInfoAlert(){
 
         ContextThemeWrapper ctw =  new ContextThemeWrapper(getActivity(), R.style.AlertDialogCustom);
-
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ctw);
         alertDialogBuilder.setTitle(getResources().getString(R.string.alert_title));
@@ -214,6 +211,9 @@ public class ToDoListActivityFragment extends Fragment {
         shortdesc1.setText("");
         duedate1.setText("");
         addtlinfo1.setText("");
+
+        // Set focus back to the title field
+        title1.requestFocus();
 
     }//end of onClearEditBox()
 

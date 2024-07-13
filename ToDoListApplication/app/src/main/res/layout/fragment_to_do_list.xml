@@ -43,7 +43,8 @@
                 android:hint="@string/hint_title"
                 android:inputType="text"
                 android:text="@string/edit"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:imeOptions="actionDone" />
         </TableRow>
 
         <TableRow
@@ -67,7 +68,8 @@
                 android:hint="@string/hint_shortdesc"
                 android:inputType="textShortMessage"
                 android:text="@string/edit"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:imeOptions="actionDone" />
 
         </TableRow>
 
@@ -93,7 +95,8 @@
                 android:hint="@string/hint_due"
                 android:inputType="date"
                 android:text="@string/edit"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:imeOptions="actionDone" />
         </TableRow>
 
         <TableRow
@@ -118,7 +121,8 @@
                 android:hint="@string/hint_addtlinfo"
                 android:inputType="textShortMessage"
                 android:text="@string/edit"
-                android:textSize="@dimen/text_size_normal" />
+                android:textSize="@dimen/text_size_normal"
+                android:imeOptions="actionDone" />
         </TableRow>
 
         <Button
