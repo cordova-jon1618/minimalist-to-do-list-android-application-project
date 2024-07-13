@@ -236,6 +236,7 @@ public class ToDoListActivityFragment extends Fragment {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 getActivity(),
+                R.style.CustomDatePickerDialog, // Applying the custom style
                 (view, year1, monthOfYear, dayOfMonth) -> {
                     // Format the date as MM/DD/YYYY
                     String selectedDate = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year1;

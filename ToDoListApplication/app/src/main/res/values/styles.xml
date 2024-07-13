@@ -28,5 +28,14 @@
         <item name="android:background">#000000</item>
     </style>
 
+    <!-- Custom style for DatePickerDialog -->
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:datePickerDialogTheme">@style/CustomDatePickerTheme</item>
+    </style>
+
+    <!-- Custom DatePicker theme -->
+    <style name="CustomDatePickerTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:headerBackground">@color/headerBackgroundColor</item>
+    </style>
 
 </resources>

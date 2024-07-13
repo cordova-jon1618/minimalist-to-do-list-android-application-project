@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#62667b</color>
     <color name="colorAccent">#FF4081</color>
+    <!-- Adding new colors for DatePickerDialog -->
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="headerBackgroundColor">#3F51B5</color>
 </resources>
