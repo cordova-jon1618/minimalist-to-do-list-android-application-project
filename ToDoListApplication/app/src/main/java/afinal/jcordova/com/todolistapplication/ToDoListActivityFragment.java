@@ -134,6 +134,9 @@ public class ToDoListActivityFragment extends Fragment {
             adapter.notifyDataSetChanged(); //listView refreshes
 
             onClearEditBox();
+            // Reset focus back to the title field
+            title.requestFocus();
+
         }
         //Hides the keyboard after the user hits the save button
         InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
