@@ -19,9 +19,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.app.DatePickerDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Calendar;
 
 
 public class ToDoListActivityFragment extends Fragment {
@@ -101,6 +103,14 @@ public class ToDoListActivityFragment extends Fragment {
         shortdesc.setOnKeyListener(onKeyListener);
         duedate.setOnKeyListener(onKeyListener);
         addtlinfo.setOnKeyListener(onKeyListener);
+
+        // Adding an option to use a calendar feature to select the due date
+        duedate.setOnClickListener(v -> showDatePickerDialog());
+        duedate.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                showDatePickerDialog();
+            }
+        });
 
     }//end of onActivityCreated
 
@@ -217,5 +227,23 @@ public class ToDoListActivityFragment extends Fragment {
 
     }//end of onClearEditBox()
 
+    //method displays a DatePickerDialog to allow users to select a date from a calendar
+    private void showDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getActivity(),
+                (view, year1, monthOfYear, dayOfMonth) -> {
+                    // Format the date as MM/DD/YYYY
+                    String selectedDate = (monthOfYear + 1) + "/" + dayOfMonth + "/" + year1;
+                    EditText duedate = (EditText)getActivity().findViewById(R.id.edit_duedate);
+                    duedate.setText(selectedDate);
+                },
+                year, month, day);
+        datePickerDialog.show();
+    }
 
 }//end of class
