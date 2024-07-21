@@ -68,7 +68,11 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
         try {
             ToDoItem todo = toDoItems.get(position);
             holder.txtTitle.setText(todo.getTitle());
-            holder.txtShortDesc.setText(todo.getShortdesc());
+
+            //Updated to always display "Note" instead of the short description
+            holder.txtShortDesc.setText("Note");
+            //holder.txtShortDesc.setText(todo.getShortdesc());
+
             holder.txtDueDate.setText(todo.getDuedate());
             //holder.txtAddtlInfo.setText(todo.getAddtlinfo());
             holder.imgIcon.setImageResource(R.drawable.ic_clipboard0);
