@@ -63,7 +63,11 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
             holder.circleButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    handleButtonClick(position);
+                    // Toggle the selected state of the button
+                    v.setSelected(!v.isSelected());
+
+                    // position of task item
+                    //handleButtonClick(position, v.isSelected());
                 }
             });
 

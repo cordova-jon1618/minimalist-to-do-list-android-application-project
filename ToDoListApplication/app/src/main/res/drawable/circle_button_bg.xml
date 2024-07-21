@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
-    <solid android:color="@android:color/transparent" />
-    <stroke android:width="2dp" android:color="#808080" />
-    <size
-        android:width="30dp"
-        android:height="30dp"/>
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Toggled (active) state -->
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <solid android:color="#D3D3D3"/> <!-- Grey color when toggled on -->
+            <stroke android:width="2dp" android:color="#808080" />
+            <size android:width="30dp" android:height="30dp"/>
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="2dp" android:color="#808080" />
+            <size android:width="30dp" android:height="30dp"/>
+        </shape>
+    </item>
+</selector>
