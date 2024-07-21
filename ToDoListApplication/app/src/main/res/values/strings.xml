@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simple To Do List App</string>
+    <string name="app_name">Minimalist To-Do List App</string>
     <string name="action_settings">Settings</string>
 
     <string name="titel_activity_todo">To Do</string>
