@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,8 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
         TextView txtDueDate;
         //TextView txtAddtlInfo;
 
+        Button circleButton; // Reference to the circle button
+
     }//static class TodoHolder
 
 
@@ -53,6 +56,17 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
 
             //We won't display Additional information unless the user clicks on the list item
             //holder.txtAddtlInfo = (TextView) convertView.findViewById(R.id.addtlinfo_label);
+
+
+            // Set the OnClickListener for the circleButton
+            holder.circleButton = (Button) convertView.findViewById(R.id.circleButton);
+            holder.circleButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    handleButtonClick(position);
+                }
+            });
+
 
 
             //Using tags to store data
@@ -83,4 +97,10 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
         }
         return convertView;
     }//end of getView
+
+
+    private void handleButtonClick(int position) {
+        Log.d(TAG, "Button at position " + position + " clicked");
+    }
+
 }//end of class
