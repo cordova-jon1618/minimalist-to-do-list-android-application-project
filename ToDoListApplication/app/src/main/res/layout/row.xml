@@ -82,7 +82,7 @@
         android:background="@drawable/circle_button_bg"
         android:textColor="@android:color/white"
         android:focusable="false"
-        android:clickable="false"
+        android:clickable="true"
         />
 
 
