@@ -81,8 +81,8 @@
         android:layout_marginRight="@dimen/min_dp"
         android:background="@drawable/circle_button_bg"
         android:textColor="@android:color/white"
-        android:focusable="true"
-        android:clickable="true"
+        android:focusable="false"
+        android:clickable="false"
         />
 
 
