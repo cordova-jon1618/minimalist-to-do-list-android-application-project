@@ -24,12 +24,14 @@ public final class DBHelper {
     public static final String KEY_SHORTDESC = "shortdesc";
     public static final String KEY_DUEDATE = "duedate";
     public static final String KEY_ADDTLINFO = "addtldesc";
+    public static final String KEY_COMPLETED = "completed";
 
     public static final int COLUMN_ID = 0;
     public static final int COLUMN_TITLE = 1;
     public static final int COLUMN_SHORTDESC = 2;
     public static final int COLUMN_DUEDATE = 3;
     public static final int COLUMN_ADDTLINFO = 4;
+    public static final int COLUMN_COMPLETED = 5;
 
     private Context context;
     private SQLiteDatabase db;
@@ -37,7 +39,8 @@ public final class DBHelper {
 
     private static final String INSERT =
             "INSERT INTO " + TABLE_NAME + "(" + KEY_TITLE + ", " +
-                    KEY_SHORTDESC + ", " + KEY_DUEDATE + ", " + KEY_ADDTLINFO + ") values (?, ?, ?, ?);";
+                    KEY_SHORTDESC + ", " + KEY_DUEDATE + ", " + KEY_ADDTLINFO + ", " +
+                    KEY_COMPLETED + ") values (?, ?, ?, ?, ?);";
 
     public DBHelper(Context context) throws Exception {
         this.context = context;
@@ -54,10 +57,13 @@ public final class DBHelper {
 
     public long insert (ToDoItem todoInfo)
     {
+        insertStmt.clearBindings();
+
         insertStmt.bindString(COLUMN_TITLE, todoInfo.getTitle());
         insertStmt.bindString(COLUMN_SHORTDESC, todoInfo.getShortdesc());
         insertStmt.bindString(COLUMN_DUEDATE, todoInfo.getDuedate());
         insertStmt.bindString(COLUMN_ADDTLINFO, todoInfo.getAddtlinfo());
+        insertStmt.bindLong(COLUMN_COMPLETED, todoInfo.isCompleted());
         long value =-1;
         try
         {
@@ -79,7 +85,8 @@ public final class DBHelper {
         private static final String CREATE_TABLE =
                 "CREATE TABLE " + TABLE_NAME + " (" + KEY_ID + " INTEGER PRIMARY KEY, " +
                         KEY_TITLE + " TEXT, " + KEY_SHORTDESC + " TEXT, " + KEY_DUEDATE + " TEXT, " +
-                    KEY_ADDTLINFO + " TEXT);";
+                        KEY_ADDTLINFO + " TEXT, " +
+                        KEY_COMPLETED + " INTEGER DEFAULT 0);"; // Properly close the statement
 
         OpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -127,8 +134,16 @@ public final class DBHelper {
         List<ToDoItem> list = new ArrayList<ToDoItem>();
 
         Cursor cursor = db.query(TABLE_NAME,
-                new String[] { KEY_ID, KEY_TITLE, KEY_SHORTDESC, KEY_DUEDATE, KEY_ADDTLINFO},
+                new String[] { KEY_ID, KEY_TITLE, KEY_SHORTDESC, KEY_DUEDATE, KEY_ADDTLINFO, KEY_COMPLETED},
                 null, null, null, null, null, null);
+
+        // Get column indices once, outside the loop
+        int idIndex = cursor.getColumnIndex(KEY_ID);
+        int titleIndex = cursor.getColumnIndex(KEY_TITLE);
+        int shortDescIndex = cursor.getColumnIndex(KEY_SHORTDESC);
+        int dueDateIndex = cursor.getColumnIndex(KEY_DUEDATE);
+        int addtlInfoIndex = cursor.getColumnIndex(KEY_ADDTLINFO);
+        int completedIndex = cursor.getColumnIndex(KEY_COMPLETED);
 
         if (cursor.moveToFirst())
         {
@@ -140,6 +155,10 @@ public final class DBHelper {
                 todoInfo.setDuedate(cursor.getString(COLUMN_DUEDATE));
                 todoInfo.setAddtlinfo(cursor.getString(COLUMN_ADDTLINFO));
                 todoInfo.setId(cursor.getLong(COLUMN_ID));
+
+                // '1' is true, '0' is false
+                todoInfo.setCompleted(cursor.getInt(completedIndex));
+
                 list.add(todoInfo);
             }
             while (cursor.moveToNext());

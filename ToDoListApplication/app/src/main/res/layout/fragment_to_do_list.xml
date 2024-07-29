@@ -138,12 +138,50 @@
 
     </TableLayout>
 
+<!--    <ListView-->
+<!--        android:id="@+id/todoItems"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_above="@+id/completedItems"-->
+<!--        android:layout_below="@+id/inputControls"-->
+<!--        android:layout_centerHorizontal="true" />-->
+
+<!--    <ListView-->
+<!--        android:id="@+id/completedItems"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true" />-->
+
+    <!-- ListView for active todo items -->
     <ListView
         android:id="@+id/todoItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/headerCompleted"
         android:layout_below="@+id/inputControls"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Header for the completed items list -->
+    <TextView
+        android:id="@+id/headerCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/completedItems"
+        android:text="Completed"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:background="@android:color/darker_gray"
+        android:textColor="@android:color/white"
+        android:padding="8dp" />
+
+    <!-- ListView for completed items -->
+    <ListView
+        android:id="@+id/completedItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 

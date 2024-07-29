@@ -60,17 +60,16 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
 
             // Set the OnClickListener for the circleButton
             holder.circleButton = (Button) convertView.findViewById(R.id.circleButton);
-            holder.circleButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Toggle the selected state of the button
-                    v.setSelected(!v.isSelected());
-
-                    // position of task item
-                    //handleButtonClick(position, v.isSelected());
-                }
-            });
-
+//            holder.circleButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    // Toggle the selected state of the button
+//                    v.setSelected(!v.isSelected());
+//
+//                    // position of task item
+//                    //handleButtonClick(position, v.isSelected());
+//                }
+//            });
 
 
             //Using tags to store data
@@ -95,6 +94,19 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
             //holder.txtAddtlInfo.setText(todo.getAddtlinfo());
             holder.imgIcon.setImageResource(R.drawable.ic_clipboard0);
 
+            holder.circleButton.setSelected(todo.isCompleted() == 1);
+            holder.circleButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Toggle the completed status of the task
+                    boolean newStatus = !(todo.isCompleted() == 1);
+                    todo.setCompleted(newStatus ? 1 : 0); // Assuming setCompleted also takes an int
+                    notifyDataSetChanged();  // Notify the adapter to refresh the list view
+                    Log.d(TAG, "Task at position " + position + " completion status changed to: " + newStatus);
+                }
+            });
+
+
         } catch(Exception e) {
             Log.e(TAG, " getView toDoItems " + e + " position was : " + position +
                     " toDoItems.size: " + toDoItems.size());
@@ -102,9 +114,23 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
         return convertView;
     }//end of getView
 
+//    private void updateTaskInDatabase(ToDoItem todo) {
+//        // Assuming DBHelper is your database helper class and it's instantiated somewhere globally or passed into your adapter.
+//        dbHelper.updateTaskCompletion(todo.getId(), todo.isCompleted());
+//        Log.d(TAG, "Database updated for task ID " + todo.getId() + " with new completion status: " + todo.isCompleted());
+//    }
+//
+//    public void updateTaskCompletion(long taskId, boolean isCompleted) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put("isCompleted", isCompleted ? 1 : 0);  // Assuming the column storing completion status is called "isCompleted" and it's a boolean
+//
+//        // Updating row
+//        int rowsAffected = db.update("Tasks", values, "id = ?", new String[] { String.valueOf(taskId) });
+//        db.close();
+//
+//        Log.d("DBHelper", "Rows affected: " + rowsAffected);
+//    }
 
-    private void handleButtonClick(int position) {
-        Log.d(TAG, "Button at position " + position + " clicked");
-    }
 
 }//end of class
