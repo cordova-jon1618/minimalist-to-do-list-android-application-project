@@ -100,7 +100,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem>{
                 public void onClick(View v) {
                     // Toggle the completed status of the task
                     boolean newStatus = !(todo.isCompleted() == 1);
-                    todo.setCompleted(newStatus ? 1 : 0); // Assuming setCompleted also takes an int
+                    todo.setCompleted(newStatus ? 1 : 0);
                     notifyDataSetChanged();  // Notify the adapter to refresh the list view
                     Log.d(TAG, "Task at position " + position + " completion status changed to: " + newStatus);
                 }

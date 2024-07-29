@@ -16,7 +16,8 @@ public final class DBHelper {
     private static final String LOGTAG = "DBHelper";
 
     private static final String DATABASE_NAME = "todolist.db";
-    private static final int DATABASE_VERSION = 1;
+    //private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2; // Increased from 1 after schema change
     private static final String TABLE_NAME = "tododata";
 
     public static final String KEY_ID = "_id";
@@ -57,7 +58,7 @@ public final class DBHelper {
 
     public long insert (ToDoItem todoInfo)
     {
-        insertStmt.clearBindings();
+        //insertStmt.clearBindings();
 
         insertStmt.bindString(COLUMN_TITLE, todoInfo.getTitle());
         insertStmt.bindString(COLUMN_SHORTDESC, todoInfo.getShortdesc());
@@ -86,7 +87,8 @@ public final class DBHelper {
                 "CREATE TABLE " + TABLE_NAME + " (" + KEY_ID + " INTEGER PRIMARY KEY, " +
                         KEY_TITLE + " TEXT, " + KEY_SHORTDESC + " TEXT, " + KEY_DUEDATE + " TEXT, " +
                         KEY_ADDTLINFO + " TEXT, " +
-                        KEY_COMPLETED + " INTEGER DEFAULT 0);"; // Properly close the statement
+                        KEY_COMPLETED + " INTEGER DEFAULT 0);";
+
 
         OpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -95,6 +97,7 @@ public final class DBHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             Log.d(LOGTAG, " onCreate");
+            Log.d(LOGTAG, "Creating table with SQL: " + CREATE_TABLE);
             try {
                 db.execSQL(CREATE_TABLE);
             } catch (Exception e) {
@@ -104,7 +107,7 @@ public final class DBHelper {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.w(LOGTAG, "Upgrading database, this will drop tables and recreate.");
+            Log.w(LOGTAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will drop tables and recreate.");
             try {
                 db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
                 onCreate(db);
@@ -137,13 +140,13 @@ public final class DBHelper {
                 new String[] { KEY_ID, KEY_TITLE, KEY_SHORTDESC, KEY_DUEDATE, KEY_ADDTLINFO, KEY_COMPLETED},
                 null, null, null, null, null, null);
 
-        // Get column indices once, outside the loop
-        int idIndex = cursor.getColumnIndex(KEY_ID);
-        int titleIndex = cursor.getColumnIndex(KEY_TITLE);
-        int shortDescIndex = cursor.getColumnIndex(KEY_SHORTDESC);
-        int dueDateIndex = cursor.getColumnIndex(KEY_DUEDATE);
-        int addtlInfoIndex = cursor.getColumnIndex(KEY_ADDTLINFO);
-        int completedIndex = cursor.getColumnIndex(KEY_COMPLETED);
+//        // Get column indices once, outside the loop
+//        int idIndex = cursor.getColumnIndex(KEY_ID);
+//        int titleIndex = cursor.getColumnIndex(KEY_TITLE);
+//        int shortDescIndex = cursor.getColumnIndex(KEY_SHORTDESC);
+//        int dueDateIndex = cursor.getColumnIndex(KEY_DUEDATE);
+//        int addtlInfoIndex = cursor.getColumnIndex(KEY_ADDTLINFO);
+//        int completedIndex = cursor.getColumnIndex(KEY_COMPLETED);
 
         if (cursor.moveToFirst())
         {
@@ -157,7 +160,7 @@ public final class DBHelper {
                 todoInfo.setId(cursor.getLong(COLUMN_ID));
 
                 // '1' is true, '0' is false
-                todoInfo.setCompleted(cursor.getInt(completedIndex));
+                todoInfo.setCompleted(cursor.getInt(COLUMN_COMPLETED));
 
                 list.add(todoInfo);
             }

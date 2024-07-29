@@ -8,6 +8,7 @@ public class ToDoItem {
     public final static String SHORTDESC = "short description";
     public final static String DUEDATE = "due date";
     public final static String ADDTLINFO = "additional information";
+    public final static String COMPLETED = "completed";
 
     private String title ="";
     private String shortdesc = "";
@@ -16,7 +17,7 @@ public class ToDoItem {
     protected long id = 0;
 
     //To track completion status of task item
-    private int isCompleted = 0;
+    private int completed = 0;
 
 
     public String getTitle() {
@@ -61,11 +62,11 @@ public class ToDoItem {
 
     // Getter and setter for the completion status
     public int isCompleted() {
-        return isCompleted;
+        return completed;
     }
 
     public void setCompleted(int completed) {
-        isCompleted = completed;
+        this.completed = completed;
     }
 
     @Override
