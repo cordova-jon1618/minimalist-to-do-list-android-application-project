@@ -49,6 +49,6 @@ This is a minimalist to-do list Android application. This application focuses on
 ##  Acknowledgements
 ## 
 
-*    Developed by Jonathan Cordova as part of the Java Series at UCLA Extension Center.
+*    Developed by Jonathan Cordova
 
 ## 
